@@ -14,10 +14,10 @@ import * as actions from '../actions/videos.js'
 
   handleOnLikeClick(event){
     event.preventDefault()
-    const id = event.target.id
-    const likes = event.target.value
+    const id = event.target.parentElement.id
+    const likes = event.target.parentElement.dataset.likes
     const vidInfo = {'id': id, 'likes': likes}
-    if(event.target.className == 'like') {
+    if(event.target.parentElement.className == 'like') {
       this.props.actions.increaseLikes(vidInfo)
     }
     else{
@@ -32,7 +32,7 @@ import * as actions from '../actions/videos.js'
 
   render() {
     const videos = this.props.videos.map( (video, i) =>
-      
+        
         <div key={i} className="thumbVid">
           <Link to={"/videos/" + video.id}>
             <video width="275" height="154" >
@@ -41,8 +41,8 @@ import * as actions from '../actions/videos.js'
           </Link>
            <p className='vidTitle'>{video.title}</p>
           <div>
-            <button className='like' id={video.id} value={video.likes} onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-up" aria-hidden="true"></i></button>
-            <button className='dislike' id={video.id} value={video.likes} onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
+            <a href='#' id={video.id} data-likes={parseInt(video.likes)||0} className='like' onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-up" aria-hidden="true" ></i></a>
+            <a href='#' id={video.id} data-likes={parseInt(video.likes)||0} className='dislike' onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-down" aria-hidden="true" ></i></a>
             {video.likes}
           </div>
           <br/>
