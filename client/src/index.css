@@ -4,10 +4,18 @@ body {
   font-family: sans-serif;
 }
 
-.video {
-    border-radius: 5px;
-    cursor: default;
-    transition: 0.3s;
+.thumb{
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+    z-index: 1
+
 }
 
 
@@ -16,7 +24,7 @@ body {
   margin-bottom: -20px;
 }
 
-.vidContainer {
+.videos {
   margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
@@ -64,4 +72,44 @@ body {
 
 .likes > a:hover{
   color: blue;
+}
+
+ul {
+  padding-top: 20px;
+  width: 75%;
+  list-style: none;
+}
+
+li > .thumb{
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
+    float: left;
+    list-style: none;
+    background-color: black;
+    transition-duration: .5s;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform $transition;
+    }
+.thumb:hover,
+.thumb:focus,
+.thumb:active {
+    transform: scale(1.5);
+    z-index: 2
+}
+
+ul:hover {
+  li {
+    transform: translateX(-25%);
+  }
+
+  li:hover {
+    transform: scale(1.5);
+    transition-duration: $transition/1.1;
+  }
+
+  li:hover ~ li {
+    transform: translateX(25%);
+  }
 }

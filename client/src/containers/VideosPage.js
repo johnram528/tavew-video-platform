@@ -32,28 +32,28 @@ import * as actions from '../actions/videos.js'
 
   render() {
     const videos = this.props.videos.map( (video, i) =>
-        
-        <div key={i} className="thumbVid">
-          <Link to={"/videos/" + video.id}>
-            <video width="275" height="154" >
-              <source src={video.url} type={video.type}/>
-            </video>
-          </Link>
-           <p className='vidTitle'>{video.title}</p>
-          <div className='likes'>
-            <a href='#' id={video.id} data-likes={parseInt(video.likes)||0} className='like' onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-up fa-lg" aria-hidden="true" ></i></a>
-            <a href='#' id={video.id} data-likes={parseInt(video.likes)||0} className='dislike' onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-down fa-lg" aria-hidden="true" ></i></a>
-            {video.likes}
-          </div>
-          <br/>
-         
-         </div>  
+        <li>
+          <div key={i} className="thumbVid">
+            <Link to={"/videos/" + video.id}>
+              <video width="275" height="154" className='thumb'>
+                <source src={video.url} type={video.type}/>
+              </video>
+            </Link>
+             <p className='vidTitle'>{video.title}</p>
+            <div className='likes'>
+              <a href='#' id={video.id} data-likes={parseInt(video.likes)||0} className='like' onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-up fa-lg" aria-hidden="true" ></i></a>
+              <a href='#' id={video.id} data-likes={parseInt(video.likes)||0} className='dislike' onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-down fa-lg" aria-hidden="true" ></i></a>
+              {video.likes}
+            </div>
+            <br/>
+           </div> 
+         </li> 
       )
                
 
     return (      
       <div className='wrap'>
-        {this.props.children || <div className="vidContainer">{videos} </div> }     
+        {this.props.children || <ul className="videos">{videos} </ul> }     
       </div>  
       )
   }
