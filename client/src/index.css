@@ -61,3 +61,7 @@ body {
   padding: 4px;
   color: red;
 }
+
+.likes > a:hover{
+  color: blue;
+}
