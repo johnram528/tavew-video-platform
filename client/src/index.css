@@ -56,3 +56,8 @@ body {
   margin-top: 20px;
   color: #1a0630;
 }
+
+.likes > a{
+  padding: 4px;
+  color: red;
+}

@@ -40,9 +40,9 @@ import * as actions from '../actions/videos.js'
             </video>
           </Link>
            <p className='vidTitle'>{video.title}</p>
-          <div>
-            <a href='#' id={video.id} data-likes={parseInt(video.likes)||0} className='like' onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-up" aria-hidden="true" ></i></a>
-            <a href='#' id={video.id} data-likes={parseInt(video.likes)||0} className='dislike' onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-down" aria-hidden="true" ></i></a>
+          <div className='likes'>
+            <a href='#' id={video.id} data-likes={parseInt(video.likes)||0} className='like' onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-up fa-lg" aria-hidden="true" ></i></a>
+            <a href='#' id={video.id} data-likes={parseInt(video.likes)||0} className='dislike' onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-down fa-lg" aria-hidden="true" ></i></a>
             {video.likes}
           </div>
           <br/>
