@@ -34,9 +34,11 @@ body {
 }
 
 .wrap {
+
    overflow: hidden;
-   margin-top: -30px;
+   margin-top: 60px;
    margin-bottom: 30px;
+   position: relative;
     
 }
 
@@ -65,19 +67,31 @@ body {
   color: #1a0630;
 }
 
-.likes > a{
+.like{
   padding: 4px;
+  color: grey;
+}
+
+.dislike{
+  padding: 4px;
+  color: grey;
+}
+
+
+
+.like:hover{
+  color: green;
+}
+
+.dislike:hover{
   color: red;
 }
 
-.likes > a:hover{
-  color: blue;
-}
-
 ul {
-  padding-top: 20px;
+  height: 60%;
   width: 75%;
   list-style: none;
+  
 }
 
 li > .thumb{
