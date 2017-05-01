@@ -15,7 +15,7 @@ import { browserHistory } from 'react-router'
   constructor(props){
     super(props)
     this.state = {
-      playing: true
+      playing: true,
     }
   }
 
@@ -75,29 +75,48 @@ import { browserHistory } from 'react-router'
     browserHistory.push('/videos')
   }
 
+  currentTime() {
+    return this.props.video.vid.currentTime
+  }
+
   duration(ev) {
-    const time = ev.target.duration
+    this.props.video.vid = ev.target
+    // this.setState({
+    //   currentTime: this.currentTime(),
+    // })
+
+    const time = this.props.video.vid.duration
     const minutes = parseInt(time / 60, 10);
     const seconds = parseInt(time % 60,10);
     const duration = minutes+':'+seconds
     this.props.video.duration = duration
+
   }
 
+  handleTimeChange(ev) {
+    let time = ev.target.currentTime
+    let timeValue = (time/this.props.video.vid.duration) * 100
+    this.setState({timeValue: timeValue})
+    const minutes = parseInt(time / 60, 10);
+    const seconds = parseInt(time % 60,10); 
+    const duration = minutes+':'+seconds
+    this.setState({currentTime: duration,})
+  }
 
   render() { 
     let overlay =  (<div className='vid-overlay'>
               <button className='backButton' onClick={() => this.back()}><i className="fa fa-angle-left fa-4x" aria-hidden="true"></i></button>
               <div className='controls'>
                 <button className='playButton' onClick={() => this.play()}><i className= {this.state.playing ? 'fa fa-pause fa-2x' : 'fa fa-play fa-2x'} aria-hidden="true"></i></button>
-                <progress id='progress-bar' min='0' max='100' value='40'></progress>  
-                {this.props.video.duration}
+                <progress id='progress-bar' min='0' max='100' value={this.state.timeValue}></progress>  
+                {this.state.currentTime} / {this.props.video.duration} 
               </div>
             </div>)
  
     return (      
         <div key={this.props.video.id} className="vidShowContainer" onMouseMove={() => this.handleMouseMove()}>
           <div id='wrap-video' >
-            <video className="video" autoPlay onLoadedData={(e) => this.duration(e)}>
+            <video className="video" autoPlay onLoadedData={(e) => this.duration(e)} onTimeUpdate={(e) => this.handleTimeChange(e)}>
               <source src={this.props.video.url} type={this.props.video.type}/>
             </video>
             {this.state.active && overlay}
