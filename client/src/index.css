@@ -87,6 +87,14 @@ body {
   color: red;
 }
 
+.like:focus{
+  color: green;
+}
+
+.dislike:focus{
+  color: red;
+}
+
 ul {
   height: 60%;
   width: 75%;

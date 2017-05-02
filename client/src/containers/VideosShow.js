@@ -16,6 +16,7 @@ import { browserHistory } from 'react-router'
     super(props)
     this.state = {
       playing: true,
+      active: true
     }
   }
 
