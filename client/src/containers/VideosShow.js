@@ -5,18 +5,21 @@ import '../index.css'
 import * as actions from '../actions/videos.js'
 import { propTypes, defaultProps } from '../props'
 import { browserHistory } from 'react-router'
-
+import {VideoSeekSlider} from 'react-video-seek-slider';
+import 'react-video-seek-slider/lib/video-seek-slider.css'
 
  let timeout = null
 
-
+ //<input id="seekslider" type="range" min="0" max="100" value={this.state.seekValue} onClick={()=> this.pause()} onChange={(ev)=> this.handleSeek(ev)} step="1"></input>
 
  class VideosShow extends Component {
   constructor(props){
     super(props)
     this.state = {
       playing: true,
-      active: true
+      active: false, 
+      seekValue: 0,
+
     }
   }
 
@@ -26,6 +29,7 @@ import { browserHistory } from 'react-router'
   componentDidMount(){
     const id = this.props.params.videoId
     this.props.actions.fetchVideo(id)
+
    }
   componentWillUnmount(){
     clearTimeout(timeout);
@@ -56,19 +60,12 @@ import { browserHistory } from 'react-router'
     clearTimeout(timeout);
     this.goActive()
   }
-  play() {
+  playPause() {
 
-    const video = document.querySelector('video')
     if(this.state.playing){
-      this.setState({
-        playing: false
-      })
-      video.pause()
+      this.pause()
     }else{
-    this.setState({
-      playing: true
-    })
-    video.play()
+    this.play()
     }
   }
 
@@ -82,10 +79,7 @@ import { browserHistory } from 'react-router'
 
   duration(ev) {
     this.props.video.vid = ev.target
-    // this.setState({
-    //   currentTime: this.currentTime(),
-    // })
-
+    this.setState({video: document.querySelector('video')})
     const time = this.props.video.vid.duration
     const minutes = parseInt(time / 60, 10);
     const seconds = parseInt(time % 60,10);
@@ -97,30 +91,50 @@ import { browserHistory } from 'react-router'
   handleTimeChange(ev) {
     let time = ev.target.currentTime
     let timeValue = (time/this.props.video.vid.duration) * 100
-    this.setState({timeValue: timeValue})
+    this.setState({timeValue: timeValue, seekValue:timeValue})
     const minutes = parseInt(time / 60, 10);
     const seconds = parseInt(time % 60,10); 
     const duration = minutes+':'+seconds
     this.setState({currentTime: duration,})
   }
+  pause(){
+    this.setState({
+        playing: false
+      })
+    this.state.video.pause()
+  }
+  play() {
+    this.setState({
+      playing: true
+    })
+    this.state.video.play()
+  }
+  handleSeek(time) {
+    this.setState({seekValue:time}) 
+    this.state.video.currentTime = (this.state.video.duration*this.state.seekValue)/100
+  }
 
   render() { 
+
     let overlay =  (<div className='vid-overlay'>
               <button className='backButton' onClick={() => this.back()}><i className="fa fa-angle-left fa-4x" aria-hidden="true"></i></button>
+              
               <div className='controls'>
-                <button className='playButton' onClick={() => this.play()}><i className= {this.state.playing ? 'fa fa-pause fa-2x' : 'fa fa-play fa-2x'} aria-hidden="true"></i></button>
-                <progress id='progress-bar' min='0' max='100' value={this.state.timeValue}></progress>  
-                {this.state.currentTime} / {this.props.video.duration} 
+                <VideoSeekSlider max={100} currentTime={this.state.seekValue} progress={0} onChange={(time:number)=> this.handleSeek(time)} />
+                <div className='lowerControls'>
+                  <button className='playButton' onClick={() => this.playPause()}><i className= {this.state.playing ? 'fa fa-pause fa-2x' : 'fa fa-play fa-2x'} aria-hidden="true"></i></button>  
+                  <p className='displayTime'>{this.state.currentTime} / {this.props.video.duration}</p> 
+                </div>
               </div>
             </div>)
- 
+    
     return (      
         <div key={this.props.video.id} className="vidShowContainer" onMouseMove={() => this.handleMouseMove()}>
           <div id='wrap-video' >
             <video className="video" autoPlay onLoadedData={(e) => this.duration(e)} onTimeUpdate={(e) => this.handleTimeChange(e)}>
               <source src={this.props.video.url} type={this.props.video.type}/>
             </video>
-            {this.state.active && overlay}
+            {overlay}
           </div>
        
         </div>

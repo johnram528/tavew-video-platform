@@ -39,7 +39,7 @@ class Video < ApplicationRecord
         :output => {
           :vframes => 1,
           :s => "1200x675",
-          :ss => '00:00:02'
+          :ss => '00:01:02'
         }
       }
     },
@@ -50,7 +50,7 @@ class Video < ApplicationRecord
         :output => {
           :vframes => 1,
           :s => '300x169',
-          :ss => '00:00:02'
+          :ss => '00:01:02'
         }
       }
     },

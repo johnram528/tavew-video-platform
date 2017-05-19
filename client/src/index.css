@@ -14,7 +14,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
     transition-duration: 0.3s;
     transition-property: transform;
-    z-index: 1
+    z-index: 1;
+    opacity: .85;
 
 }
 
@@ -66,15 +67,21 @@ body {
   margin-top: 20px;
   color: #1a0630;
 }
-
+.likes {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 3;
+  color: white;
+}
 .like{
   padding: 4px;
-  color: grey;
+  color: white;
 }
 
 .dislike{
   padding: 4px;
-  color: grey;
+  color: white;
 }
 
 
@@ -101,7 +108,7 @@ ul {
   list-style: none;
   
 }
-
+$transition : 9s;
 li > .thumb{
     position: relative;
     vertical-align: middle;
@@ -109,16 +116,25 @@ li > .thumb{
     float: left;
     list-style: none;
     background-color: black;
-    transition-duration: .5s;
-    overflow: hidden;
+    transition-duration: 5s;
+
     cursor: pointer;
     transition: transform $transition;
     }
 .thumb:hover,
 .thumb:focus,
 .thumb:active {
-    transform: scale(1.5);
-    z-index: 2
+    /*transform: scale(1.5);*/
+    z-index: 2;
+    opacity: 1;
+}
+.thumb:hover ~ .thumb,
+{
+    transform: translateX(25%);
+}
+/*$transition : .2s;
+li{
+  transition: transform $transition
 }
 
 ul:hover {
@@ -134,4 +150,4 @@ ul:hover {
   li:hover ~ li {
     transform: translateX(25%);
   }
-}
+}*/
