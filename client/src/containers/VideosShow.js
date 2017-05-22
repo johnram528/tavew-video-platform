@@ -79,7 +79,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
 
   duration(ev) {
     this.props.video.vid = ev.target
-    this.setState({video: document.querySelector('video')})
+    this.setState({video: document.querySelector('video'), duration: this.props.video.vid.duration})
     const time = this.props.video.vid.duration
     const minutes = parseInt(time / 60, 10);
     const seconds = parseInt(time % 60,10);
@@ -91,11 +91,11 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
   handleTimeChange(ev) {
     let time = ev.target.currentTime
     let timeValue = (time/this.props.video.vid.duration) * 100
-    this.setState({timeValue: timeValue, seekValue:timeValue})
+    this.setState({timeValue: timeValue, seekValue:timeValue, currentTime:time})
     const minutes = parseInt(time / 60, 10);
     const seconds = parseInt(time % 60,10); 
     const duration = minutes+':'+seconds
-    this.setState({currentTime: duration,})
+    this.setState({currentDisplayTime: duration,})
   }
   pause(){
     this.setState({
@@ -110,8 +110,8 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
     this.state.video.play()
   }
   handleSeek(time) {
-    this.setState({seekValue:time}) 
-    this.state.video.currentTime = (this.state.video.duration*this.state.seekValue)/100
+    this.setState({currentTime:time}) 
+    this.state.video.currentTime = this.state.currentTime
   }
 
   render() { 
@@ -120,10 +120,10 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
               <button className='backButton' onClick={() => this.back()}><i className="fa fa-angle-left fa-4x" aria-hidden="true"></i></button>
               
               <div className='controls'>
-                <VideoSeekSlider max={100} currentTime={this.state.seekValue} progress={0} onChange={(time:number)=> this.handleSeek(time)} />
+                <VideoSeekSlider max={this.state.duration} currentTime={this.state.currentTime} progress={0} onChange={(time:number)=> this.handleSeek(time)} />
                 <div className='lowerControls'>
                   <button className='playButton' onClick={() => this.playPause()}><i className= {this.state.playing ? 'fa fa-pause fa-2x' : 'fa fa-play fa-2x'} aria-hidden="true"></i></button>  
-                  <p className='displayTime'>{this.state.currentTime} / {this.props.video.duration}</p> 
+                  <p className='displayTime'>{this.state.currentDisplayTime} / {this.props.video.duration}</p> 
                 </div>
               </div>
             </div>)
