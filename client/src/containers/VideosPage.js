@@ -34,7 +34,7 @@ import * as actions from '../actions/videos.js'
     const videos = this.props.videos.map( (video) =>
         <li key={video.id}>
           <div className="thumbVid">
-            <Link to={"/videos/" + video.id}>
+            <Link onClick={this.forceUpdate} to={"/videos/" + video.id}>
               <div>
                 <div className='likes'>
                   <a href='#' id={video.id} data-likes={parseInt(video.likes)||0} className='like' onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-up fa-lg" aria-hidden="true" ></i></a>
@@ -53,7 +53,7 @@ import * as actions from '../actions/videos.js'
       )
                
     const ulStyle = {
-      listStyle: 'none'
+      listSyle: 'none'
     }
 
     return (      

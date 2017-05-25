@@ -27,6 +27,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
     router: PropTypes.object
   };
   componentDidMount(){
+
     const id = this.props.params.videoId
     this.props.actions.fetchVideo(id)
 
@@ -122,7 +123,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
               <div className='controls'>
                 <VideoSeekSlider max={this.state.duration} currentTime={this.state.currentTime} progress={0} onChange={(time:number)=> this.handleSeek(time)} />
                 <div className='lowerControls'>
-                  <button className='playButton' onClick={() => this.playPause()}><i className= {this.state.playing ? 'fa fa-pause fa-2x' : 'fa fa-play fa-2x'} aria-hidden="true"></i></button>  
+                  <button className='playButton' onClick={() => this.playPause()}><i className={this.state.playing ? 'fa fa-pause fa-2x' : 'fa fa-play fa-2x'} aria-hidden="true"></i></button>  
                   <p className='displayTime'>{this.state.currentDisplayTime} / {this.props.video.duration}</p> 
                 </div>
               </div>

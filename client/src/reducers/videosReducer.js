@@ -31,8 +31,8 @@ export default (state = [], action) => {
     case 'FETCH_VIDEO':
       return action.video;
     case 'ADD_VIDEO':
-      video = Object.assign({}, action.video, { id: state.length + 1} );
-      return [ ...state, video ];
+      const vid = Object.assign({}, action.video, { id: state.length + 1} );
+      return [ ...state, vid ];
     default:
       return state;
     };
