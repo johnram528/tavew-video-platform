@@ -1,23 +1,31 @@
 import update from 'react-addons-update'; 
 
 export default (state = [], action) => {
+  
+  function videoMatch(video) {
+    return video.id == action.vidInfo.id
+  }
+
+  let video = state.find(videoMatch)
+  const vidIndex = state.indexOf(video)
+
+  
   switch (action.type) {
 
     case 'FETCH_VIDEOS':
       return action.videos;
     case 'INCREASE_LIKES':
-      const video = state.find( (video) => video.id == action.vidInfo.id)
+
       video.likes++
       return update(state, { 
-        [action.vidInfo.id - 1]: {
+        [vidIndex]: {
          likes: {$set: video.likes}
         }
       })
     case 'DECREASE_LIKES':
-      video = state.find( (video) => video.id == action.vidInfo.id)
       video.likes--
       return update(state, { 
-        [action.vidInfo.id - 1]: {
+        [vidIndex]: {
          likes: {$set: video.likes}
         }
       })
