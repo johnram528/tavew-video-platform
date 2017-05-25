@@ -7,10 +7,6 @@ import * as actions from '../actions/videos.js'
 
 
  class VideosPage extends Component {
-  constructor(props){
-    super(props)
-
-  }
 
   handleOnLikeClick(event){
     event.preventDefault()
