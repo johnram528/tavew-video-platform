@@ -9,7 +9,6 @@ export default (state = [], action) => {
   let video = state.find(videoMatch)
   const vidIndex = state.indexOf(video)
 
-  
   switch (action.type) {
 
     case 'FETCH_VIDEOS':
@@ -37,4 +36,5 @@ export default (state = [], action) => {
     default:
       return state;
     };
+
 };

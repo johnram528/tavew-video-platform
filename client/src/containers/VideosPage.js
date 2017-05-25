@@ -31,9 +31,9 @@ import * as actions from '../actions/videos.js'
   }
 
   render() {
-    const videos = this.props.videos.map( (video, i) =>
-        <li>
-          <div key={i} className="thumbVid">
+    const videos = this.props.videos.map( (video) =>
+        <li key={video.id}>
+          <div className="thumbVid">
             <Link to={"/videos/" + video.id}>
               <div>
                 <div className='likes'>
