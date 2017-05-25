@@ -13,7 +13,7 @@ import * as actions from '../actions/videos.js'
     const id = event.target.parentElement.id
     const likes = event.target.parentElement.dataset.likes
     const vidInfo = {'id': id, 'likes': likes}
-    if(event.target.parentElement.className == 'like') {
+    if(event.target.parentElement.className === "like") {
       this.props.actions.increaseLikes(vidInfo)
     }
     else{
