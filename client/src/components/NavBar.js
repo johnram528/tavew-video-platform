@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import {Navbar, Nav, NavItem} from 'react-bootstrap'
 import '../NavBar.css'
