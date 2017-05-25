@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import '../index.css'
 import * as actions from '../actions/videos.js'
-import { propTypes, defaultProps } from '../props'
 import { browserHistory } from 'react-router'
 import {VideoSeekSlider} from 'react-video-seek-slider';
 import 'react-video-seek-slider/lib/video-seek-slider.css'
