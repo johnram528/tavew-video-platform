@@ -52,10 +52,13 @@ import * as actions from '../actions/videos.js'
          </li> 
       )
                
+    const ulStyle = {
+      listStyle: 'none'
+    }
 
     return (      
       <div className='wrap'>
-        {this.props.children || <ul className="videos">{videos} </ul> }     
+        {this.props.children || <ul className="videos" style={ulStyle}> {videos} </ul> }     
       </div>  
       )
   }
