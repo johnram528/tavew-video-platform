@@ -31,6 +31,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   cursor: default;
+  list-style: none;
 
 }
 
