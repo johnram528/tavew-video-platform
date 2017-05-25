@@ -3,7 +3,7 @@ import update from 'react-addons-update';
 export default (state = [], action) => {
   
   function videoMatch(video) {
-    return video.id == action.vidInfo.id
+    return video.id === parseInt(action.vidInfo.id, 10)
   }
 
   let video = state.find(videoMatch)
@@ -29,12 +29,11 @@ export default (state = [], action) => {
         }
       })
     case 'FETCH_VIDEO':
-      return action.video;
+      return update(state, {$set: action.video})
     case 'ADD_VIDEO':
-      const vid = Object.assign({}, action.video, { id: state.length + 1} );
-      return [ ...state, vid ];
+      video = Object.assign({}, action.video, { id: state.length + 1} );
+      return [ ...state, video ];
     default:
-      return state;
-    };
-
-};
+      return state
+  }
+} 
