@@ -26,10 +26,8 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
     router: PropTypes.object
   };
   componentDidMount(){
-
     const id = this.props.params.videoId
     this.props.actions.fetchVideo(id)
-
    }
   componentWillUnmount(){
     clearTimeout(timeout);
@@ -134,7 +132,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
             <video className="video" autoPlay onLoadedData={(e) => this.duration(e)} onTimeUpdate={(e) => this.handleTimeChange(e)}>
               <source src={this.props.video.url} type={this.props.video.type}/>
             </video>
-            {overlay}
+            {this.state.active && overlay}
           </div>
        
         </div>
