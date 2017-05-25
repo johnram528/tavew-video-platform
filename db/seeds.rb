@@ -5,12 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user = User.create(username: 'johnram528', email: 'johnram528@gmail.com', password:'password')
+user = User.first
 
-file1 = File.open('/Users/master/Downloads/Girl_Checks_Phone.mp4')
-file2 = File.open('/Users/master/Downloads/uscenes_h-264_hd_test.mp4')
-file3 = File.open('/Users/master/Downloads/mov_bbb.mp4')
+file1 = File.open('public/system/videos/files/000/000/001/original/Girl_Checks_Phone.mp4')
+file2 = File.open('public/system/videos/files/000/000/004/original/uscenes_h-264_hd_test.mp4')
+
 
 user.videos.create(title: 'test1', description: 'test1', file: file1)
 user.videos.create(title: 'test2', description: 'test2', file: file2)
-user.videos.create(title: 'test3', description: 'test3', file: file3)
+
+
