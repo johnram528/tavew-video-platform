@@ -14,10 +14,6 @@ class VideosNew extends Component {
 
   }
 
-  handleMouseMove(event) {
-    this.resetTimer()
-  }
-
   handleInputChange(event) {
     const { value, name } = event.target
     this.setState({
@@ -38,7 +34,7 @@ class VideosNew extends Component {
     data.append('video[title]', this.state.title)
     data.append('video[description]', this.state.description)
     data.append('video[file]', this.state.file)
-    data.append('video[user_id]', this.state.user_id)
+    data.append('video[user_id]', 1)
 
     this.props.actions.addVideo(data).then(() => {
       this.props.router.push('/videos')
@@ -47,26 +43,6 @@ class VideosNew extends Component {
 
   }
   
-  startTimer() {
-     timeout = setTimeout(this.goInactive.bind(this), 5000)
-    }
-
-  goInactive() {
-    this.setState({
-      active: false
-    })
-  }
-
-  goActive() {
-    this.setState({
-      active: true,
-    })
-    this.startTimer()
-  }
-  resetTimer() {
-    clearTimeout(timeout);
-    this.goActive()
-  }
 
   render() {
     console.log(this.state)
