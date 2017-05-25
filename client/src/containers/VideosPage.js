@@ -33,9 +33,9 @@ import * as actions from '../actions/videos.js'
             <Link onClick={this.forceUpdate} to={"/videos/" + video.id}>
               <div>
                 <div className='likes'>
-                  <a href='#' id={video.id} data-likes={parseInt(video.likes)||0} className='like' onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-up fa-lg" aria-hidden="true" ></i></a>
+                  <a href='#' id={video.id} data-likes={parseInt(video.likes,10)||0} className='like' onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-up fa-lg" aria-hidden="true" ></i></a>
                   {video.likes}
-                  <a href='#' id={video.id} data-likes={parseInt(video.likes)||0} className='dislike' onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-down fa-lg" aria-hidden="true" ></i></a>
+                  <a href='#' id={video.id} data-likes={parseInt(video.likes,10)||0} className='dislike' onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-down fa-lg" aria-hidden="true" ></i></a>
                 </div>
                                 <video width="275" height="154" className='thumb'>
                   <source src={video.url} type={video.type}/>
