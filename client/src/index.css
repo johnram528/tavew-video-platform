@@ -7,8 +7,12 @@ body {
 .thumb{
     display: inline-block;
     position: relative;
+    right: 0; 
+    bottom: 0;
     vertical-align: middle;
-    transform: translateZ(0);
+    min-height: 100%;
+    object-fit: cover;
+    overflow: hidden;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
     backface-visibility: hidden;
     -moz-osx-font-smoothing: grayscale;
@@ -19,6 +23,11 @@ body {
 
 }
 
+.vidContainer{
+  height: 154px;
+  width:275px;
+  overflow: hidden;
+}
 
 .thumbVid {
   margin:0;
@@ -31,7 +40,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   cursor: default;
-  list-style: none;
+  list-style: none; 
 
 }
 
@@ -57,12 +66,6 @@ body {
   align-items: center;
   justify-content: center;
 }
-
-/*.vidShowContainer {
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 15px;
-}*/
 
 .uploadLink {
   margin-top: 20px;
@@ -129,26 +132,3 @@ li > .thumb{
     z-index: 2;
     opacity: 1;
 }
-.thumb:hover ~ .thumb,
-{
-    transform: translateX(25%);
-}
-/*$transition : .2s;
-li{
-  transition: transform $transition
-}
-
-ul:hover {
-  li {
-    transform: translateX(-25%);
-  }
-
-  li:hover {
-    transform: scale(1.5);
-    transition-duration: $transition/1.1;
-  }
-
-  li:hover ~ li {
-    transform: translateX(25%);
-  }
-}*/

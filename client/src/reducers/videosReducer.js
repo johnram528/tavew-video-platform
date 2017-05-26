@@ -29,7 +29,7 @@ export default (state = [], action) => {
         }
       })
     case 'FETCH_VIDEO':
-      return update(state, {$set: action.video})
+      return action.video;
     case 'ADD_VIDEO':
       video = Object.assign({}, action.video, { id: state.length + 1} );
       return [ ...state, video ];

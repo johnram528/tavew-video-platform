@@ -30,12 +30,12 @@
   overflow: hidden;
 }
 
+
  .video{
      background: black; 
      position:absolute;
      padding: 2px 50px;
      left:0;top:0;
-     height: 100%;
      width: 100%;
      z-index:-100;
      visibility: visible;
