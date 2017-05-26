@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: hyggxnjow
+  api_key: '854878124762171'
+  api_secret: Qp_Aq--mrEGlmeXC8lAIIcpG5wU
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: hyggxnjow
+  api_key: '854878124762171'
+  api_secret: Qp_Aq--mrEGlmeXC8lAIIcpG5wU
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: hyggxnjow
+  api_key: '854878124762171'
+  api_secret: Qp_Aq--mrEGlmeXC8lAIIcpG5wU
+  enhance_image_tag: true
+  static_image_support: false

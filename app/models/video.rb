@@ -2,7 +2,11 @@ class Video < ApplicationRecord
   #user model is pending
   # belongs_to :user
 
-  has_attached_file :file, :styles => {
+  has_attached_file :file, 
+  :storage => :cloudinary,
+  :cloudinary_resource_type => :video,
+  :path => ':id/:style/:filename',
+  :styles => {
     :mp4 => {
       :format => 'mp4',
       :geometry => "1200x700#",

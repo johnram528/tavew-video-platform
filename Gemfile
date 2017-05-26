@@ -29,6 +29,8 @@ gem 'paperclip'
 gem 'paperclip-av-transcoder'
 gem 'delayed_paperclip'
 gem 'active_model_serializers'
+gem 'paperclip-cloudinary'
+gem 'cloudinary'
 
 
 group :development, :test do
