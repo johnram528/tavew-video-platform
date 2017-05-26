@@ -29,6 +29,7 @@
   height: 100%; 
   overflow: hidden;
 }
+
  .video{
      background: black; 
      position:absolute;
@@ -36,7 +37,6 @@
      left:0;top:0;
      height: 100%;
      width: 100%;
-     height:auto;
      z-index:-100;
      visibility: visible;
      justify-content: center;
