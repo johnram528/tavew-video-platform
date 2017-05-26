@@ -2,17 +2,9 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/videos.js'
-let timeout = null
+
 
 class VideosNew extends Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      active: false 
-    }
-
-  }
 
   handleInputChange(event) {
     const { value, name } = event.target
@@ -47,7 +39,7 @@ class VideosNew extends Component {
   render() {
     console.log(this.state)
     return (
-      <div className='form' onMouseMove={(event) => this.handleMouseMove(event) }>
+      <div className='form'>
       <form id="form" onSubmit={(event) => this.handleOnClick(event)}>
         <div className='input-group'>
           <input className='add-video-field'
