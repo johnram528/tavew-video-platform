@@ -26,8 +26,10 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
     router: PropTypes.object
   };
   componentDidMount(){
+    console.log('in componentDidMount')
     const id = this.props.params.videoId
     this.props.actions.fetchVideo(id)
+
    }
   componentWillUnmount(){
     clearTimeout(timeout);
@@ -76,6 +78,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
   }
 
   duration(ev) {
+    console.log('video loaded')
     this.props.video.vid = ev.target
     this.setState({video: document.querySelector('video'), duration: this.props.video.vid.duration})
     const time = this.props.video.vid.duration
@@ -142,9 +145,11 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
 }
 
 function mapStateToProps(state) {
+  console.log('in map state to props')
   return {
     video: state.videos,
   }
+  console.log(this.state.video)
 }
 
 function mapDispatchToProps(dispatch) {

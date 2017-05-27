@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link } from 'react-router'
+import { browserHistory } from 'react-router'
 import '../index.css'
 import * as actions from '../actions/videos.js'
 
@@ -21,11 +22,10 @@ import * as actions from '../actions/videos.js'
     }
   }
 
-  handleOnHover(e) {
-    console.log(e.target)
-    this.setState({
-      vidHovered: true,
-    })
+
+  handleOnVidClick(e){
+    e.preventDefault
+    browserHistory.push('/videos/' + e.target.dataset.id)
   }
 
 
@@ -38,7 +38,7 @@ import * as actions from '../actions/videos.js'
     const videos = this.props.videos.map( (video) =>
         <li key={video.id}>
           <div className="thumbVid">
-            <Link onClick={this.forceUpdate} to={"/videos/" + video.id}>
+           
               <div className='vidContainer'>
                 <div className='likes'>
                   <a href='#' id={video.id} data-likes={parseInt(video.likes,10)||0} className='like' onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-up fa-lg" aria-hidden="true" ></i></a>
@@ -46,12 +46,15 @@ import * as actions from '../actions/videos.js'
                   <a href='#' id={video.id} data-likes={parseInt(video.likes,10)||0} className='dislike' onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-down fa-lg" aria-hidden="true" ></i></a>
                 </div>
                 <img 
+                  data-id={video.id}
                   className='thumb' 
                   src={video.img_url} alt={video.title} 
                   onMouseOver={(e)=> {e.target.src= video.gif_url}}
-                  onMouseOut={(e)=> {e.target.src= video.img_url}}/>
+                  onMouseOut={(e)=> {e.target.src= video.img_url}}
+
+                  onClick={(e)=> this.handleOnVidClick(e)}/>
               </div>
-            </Link>
+           
             <p className='vidTitle'>{video.title}</p>
             <br/>
            </div> 
