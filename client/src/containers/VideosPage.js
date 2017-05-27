@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Link } from 'react-router'
 import { browserHistory } from 'react-router'
 import '../index.css'
 import * as actions from '../actions/videos.js'
@@ -51,7 +50,6 @@ import * as actions from '../actions/videos.js'
                   src={video.img_url} alt={video.title} 
                   onMouseOver={(e)=> {e.target.src= video.gif_url}}
                   onMouseOut={(e)=> {e.target.src= video.img_url}}
-
                   onClick={(e)=> this.handleOnVidClick(e)}/>
               </div>
            
