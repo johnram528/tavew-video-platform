@@ -21,12 +21,20 @@ import * as actions from '../actions/videos.js'
     }
   }
 
+  handleOnHover(e) {
+    console.log(e.target)
+    this.setState({
+      vidHovered: true,
+    })
+  }
+
 
   componentDidMount(){
     this.props.actions.fetchVideos()
   }
 
   render() {
+
     const videos = this.props.videos.map( (video) =>
         <li key={video.id}>
           <div className="thumbVid">
@@ -37,7 +45,11 @@ import * as actions from '../actions/videos.js'
                   {video.likes}
                   <a href='#' id={video.id} data-likes={parseInt(video.likes,10)||0} className='dislike' onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-down fa-lg" aria-hidden="true" ></i></a>
                 </div>
-                <img className='thumb' src={video.img_url} alt={video.title}/>
+                <img 
+                  className='thumb' 
+                  src={video.img_url} alt={video.title} 
+                  onMouseOver={(e)=> {e.target.src= video.gif_url}}
+                  onMouseOut={(e)=> {e.target.src= video.img_url}}/>
               </div>
             </Link>
             <p className='vidTitle'>{video.title}</p>
