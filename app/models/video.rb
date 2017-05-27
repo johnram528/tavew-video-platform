@@ -37,11 +37,11 @@ class Video < ApplicationRecord
 
 
     :preview => {
-      :format => :jpg,
+      :format => :gif,
       :geometry => "1200x700#",
       :convert_options => {
         :output => {
-          :vframes => 1,
+          :vframes => 10,
           :s => "1200x675",
           :ss => '00:01:02'
         }
