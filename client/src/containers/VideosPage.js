@@ -37,7 +37,7 @@ import * as actions from '../actions/videos.js'
                   {video.likes}
                   <a href='#' id={video.id} data-likes={parseInt(video.likes,10)||0} className='dislike' onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-down fa-lg" aria-hidden="true" ></i></a>
                 </div>
-                <img className='thumb' src={video.img_url}/>
+                <img className='thumb' src={video.img_url} alt={video.title}/>
               </div>
             </Link>
             <p className='vidTitle'>{video.title}</p>
