@@ -23,7 +23,6 @@ import * as actions from '../actions/videos.js'
 
 
   handleOnVidClick(e){
-    e.preventDefault
     browserHistory.push('/videos/' + e.target.dataset.id)
   }
 
