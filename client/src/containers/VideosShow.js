@@ -9,7 +9,6 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
 
  let timeout = null
 
- //<input id="seekslider" type="range" min="0" max="100" value={this.state.seekValue} onClick={()=> this.pause()} onChange={(ev)=> this.handleSeek(ev)} step="1"></input>
 
  class VideosShow extends Component {
   constructor(props){
@@ -26,10 +25,8 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
     router: PropTypes.object
   };
   componentDidMount(){
-    console.log('in componentDidMount')
     const id = this.props.params.videoId
     this.props.actions.fetchVideo(id)
-
    }
   componentWillUnmount(){
     clearTimeout(timeout);
@@ -145,11 +142,9 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
 }
 
 function mapStateToProps(state) {
-  console.log('in map state to props')
   return {
     video: state.videos,
   }
-  console.log(this.state.video)
 }
 
 function mapDispatchToProps(dispatch) {
