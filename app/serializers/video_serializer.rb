@@ -11,7 +11,7 @@ class VideoSerializer < ActiveModel::Serializer
   end
 
   def img_url
-    object.file.url.gsub('.mp4', '.gif')
+    object.file.url.gsub('upload', 'upload/w_275,h_154').gsub('.mp4', '.jpg')
   end
 
 end
