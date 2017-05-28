@@ -92,7 +92,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
     this.setState({timeValue: timeValue, seekValue:timeValue, currentTime:time})
     const minutes = parseInt(time / 60, 10);
     const seconds = parseInt(time % 60,10); 
-    const duration = minutes+':'+seconds
+    const duration = seconds >= 10 ? minutes+':'+seconds : minutes+':'+'0'+seconds
     this.setState({currentDisplayTime: duration,})
   }
   pause(){
