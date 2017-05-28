@@ -71,6 +71,7 @@
 
  .backButton:hover {
   opacity: 1;
+  z-index: 1
  }
 
  .playButton {
@@ -105,6 +106,8 @@
   margin-right: 10%;
   margin-left: 8%;
   border-radius: 8px;
+  position: relative;
+  z-index: 1
 }
 
 
@@ -115,7 +118,42 @@
 
 .lowerControls {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+}
+
+.volume, .volumeMute, .fullScreen {
+  justify-content: flex-start;
+  background-color: black;
+  color:white;
+  border: 0px;
+}
+
+.controlVidTitle {
+  color: white;
+  align-self: flex-end;
+  margin-right: 200px ;
+  margin-left: 15px;
+  opacity: .9
+}
+
+.playing {
+  color: #d4d4d6;
+  font-size: 16px;
+  opacity: 1;
+}
+
+.pausedDisplay {
+  align-self: center;
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  color: #d4d4d6;
+  opacity:.75;
+  position: absolute;
+  border: 1px;
+  border-radius: .5;
+  padding: 0px;
+  z-index: -1;
 }
 
 
