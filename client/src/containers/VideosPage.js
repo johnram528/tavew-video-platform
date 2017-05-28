@@ -23,6 +23,7 @@ import * as actions from '../actions/videos.js'
 
 
   handleOnVidClick(e){
+    console.log(e.target)
     browserHistory.push('/videos/' + e.target.dataset.id)
   }
 
@@ -43,6 +44,7 @@ import * as actions from '../actions/videos.js'
                   {video.likes}
                   <a href='#' id={video.id} data-likes={parseInt(video.likes,10)||0} className='dislike' onClick={(event) => this.handleOnLikeClick(event)}><i className="fa fa-thumbs-o-down fa-lg" aria-hidden="true" ></i></a>
                 </div>
+                <div className='showPlayCircle'  onClick={(e)=> this.handleOnVidClick(e)}><i className="fa fa-play-circle-o fa-5x" aria-hidden="true" data-id={video.id}></i></div>
                 <img 
                   data-id={video.id}
                   className='thumb' 
@@ -50,6 +52,7 @@ import * as actions from '../actions/videos.js'
                   onMouseOver={(e)=> {e.target.src= video.gif_url}}
                   onMouseOut={(e)=> {e.target.src= video.img_url}}
                   onClick={(e)=> this.handleOnVidClick(e)}/>
+
               </div>
            
             <p className='vidTitle'>{video.title}</p>

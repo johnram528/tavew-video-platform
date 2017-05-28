@@ -81,6 +81,13 @@ body {
   justify-content: flex-end;
   z-index: 3;
   color: white;
+  background-color: #2e2e30;
+  margin-top: 2.5px;
+  margin-left: 2px;
+  opacity: .85;
+  border: 1px solid;
+  border-color: #949496;
+  border-radius: 30px;
 }
 .like{
   padding: 4px;
@@ -135,4 +142,17 @@ li > .thumb{
     /*transform: scale(1.5);*/
     z-index: 2;
     opacity: 1;
+}
+
+.showPlayCircle i {
+  position: absolute;
+  z-index: 4;
+  margin: 45px 40px 50px -30px;
+  color: white;
+  opacity: .25;
+  cursor: pointer;
+}
+
+.showPlayCircle:hover i {
+  opacity: .75
 }
