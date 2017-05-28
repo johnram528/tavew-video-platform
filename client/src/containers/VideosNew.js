@@ -5,6 +5,18 @@ import * as actions from '../actions/videos.js'
 
 
 class VideosNew extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      loading: false,
+    }
+  }
+
+  componetWillUnmount() {
+    this.setState({
+      loading:false,
+    })
+  }
 
   handleInputChange(event) {
     const { value, name } = event.target
@@ -22,6 +34,9 @@ class VideosNew extends Component {
 
   handleOnClick(event) {
     event.preventDefault()
+    this.setState({
+      loading: true
+    })
     const data = new FormData()
     data.append('video[title]', this.state.title)
     data.append('video[description]', this.state.description)
@@ -38,42 +53,46 @@ class VideosNew extends Component {
 
   render() {
     console.log(this.state)
+    const loading = (        <i className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>)
     return (
-      <div className='form'>
-      <form id="form" onSubmit={(event) => this.handleOnClick(event)}>
-        <div className='input-group'>
-          <input className='add-video-field'
-          type="text" 
-          name="title"
-          placeholder='title'  
-          onChange={(event) => this.handleInputChange(event)}/>
-        </div>
+      <div>
+        <div className='form'>
+        <form id="form" onSubmit={(event) => this.handleOnClick(event)}>
+          <div className='input-group'>
+            <input className='add-video-field'
+            type="text" 
+            name="title"
+            placeholder='title'  
+            onChange={(event) => this.handleInputChange(event)}/>
+          </div>
 
-        <div className='input-group'>
-          <input className='add-video-field'
-          type="text" 
-          name="description"
-          placeholder='description' 
-          size='70'
-          onChange={(event) => this.handleInputChange(event)}/>
-        </div>
-                
-        <div className='input-group'>
-          <input className='add-video-field'
-          type="file" 
-          name="file" 
-          accept="video/mp4,video/x-m4v,video/*"
-          onChange={(event) => this.handleOnAttach(event)}/>
-        </div>
+          <div className='input-group'>
+            <input className='add-video-field'
+            type="text" 
+            name="description"
+            placeholder='description' 
+            size='70'
+            onChange={(event) => this.handleInputChange(event)}/>
+          </div>
+                  
+          <div className='input-group'>
+            <input className='add-video-field'
+            type="file" 
+            name="file" 
+            accept="video/mp4,video/x-m4v,video/*"
+            onChange={(event) => this.handleOnAttach(event)}/>
+          </div>
 
-        <div className='input-group'>
-          <input className='add-video-button'
-          type="submit" 
-          name="Upload Video" 
-          />
+          <div className='input-group'>
+            <input className='add-video-button'
+            type="submit" 
+            name="Upload Video" 
+            />
+          </div>
+        </form>
         </div>
-      </form>
-      </div>
+          {this.state.loading && loading}
+        </div>
       )
   }
 }

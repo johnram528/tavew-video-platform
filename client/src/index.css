@@ -19,7 +19,7 @@ body {
     transition-duration: 0.3s;
     transition-property: transform;
     z-index: 1;
-    opacity: .85;
+    opacity: 1;
 
 }
 
