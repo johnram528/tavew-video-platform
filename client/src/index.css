@@ -6,6 +6,7 @@ body {
 
 .thumb{
     display: inline-block;
+    margin: 2px;
     position: relative;
     right: 0; 
     bottom: 0;
