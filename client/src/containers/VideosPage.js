@@ -56,7 +56,7 @@ import * as actions from '../actions/videos.js'
 
               </div>
            
-            <p className='vidTitle'>{video.title}</p>
+            <p className='vidTitle'><a href={'/videos/' + video.id}>{video.title}</a></p>
             <br/>
            </div> 
          </li> 
