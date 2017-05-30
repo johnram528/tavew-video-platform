@@ -107,11 +107,11 @@ body {
 
 
 .like:hover{
-  color: green;
+  color: grey;
 }
 
 .dislike:hover{
-  color: red;
+  color: grey;
 }
 
 .like:focus{
