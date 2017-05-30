@@ -161,3 +161,10 @@ li > .thumb{
 .showPlayCircle:hover i {
   opacity: .75
 }
+
+.indexVidTime {
+  position: absolute;
+  z-index: 4;
+  background-color: black;
+}
+

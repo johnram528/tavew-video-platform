@@ -121,13 +121,15 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
               {!this.state.playing && pausedDisplay}
               <div className='controls'>
                 <VideoSeekSlider max={this.state.duration} currentTime={this.state.currentTime} progress={0} onChange={(time:number)=> this.handleSeek(time)} />
-                <div className='lowerControls'>
-                  <p className='controlVidTitle'><span className='playing'>Playing: </span>{this.props.video.title}</p>
-                  <button className='playButton' onClick={() => this.playPause()}><i className={this.state.playing ? 'fa fa-pause fa-2x' : 'fa fa-play fa-2x'} aria-hidden="true"></i></button>
-                  <button className='volume'><i className="fa fa-volume-up fa-lg" aria-hidden="true"></i></button>
-                  <button className='volumeMute'><i className="fa fa-volume-off fa-lg" aria-hidden="true"></i></button>
-                  <button className='fullScreen'><i className="fa fa-expand fa-lg" aria-hidden="true"></i></button>    
-                  <p className='displayTime'>{this.state.currentDisplayTime} / {this.props.video.duration}</p> 
+                <div className='lowerControls row'>
+                  <button className='playButton col-sm-1' onClick={() => this.playPause()}><i className={this.state.playing ? 'fa fa-pause fa-2x' : 'fa fa-play fa-2x'} aria-hidden="true"></i></button>
+                  <div className='vol col-sm-2'>
+                    <button className='volume'><i className="fa fa-volume-up fa-lg" aria-hidden="true"></i></button>
+                    <input className='volumeRange' type='range' defaultValue='100'/>
+                  </div>
+                  <p className='controlVidTitle col-sm-4'><span className='playing'>Playing: </span>{this.props.video.title}</p>    
+                  <p className='displayTime col-sm-2'>{this.state.currentDisplayTime} / {this.props.video.duration}</p>
+                  <button className='fullScreen col-sm-1'><i className="fa fa-expand fa-lg" aria-hidden="true"></i></button> 
                 </div>
               </div>
             </div>)
