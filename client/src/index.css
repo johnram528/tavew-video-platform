@@ -70,6 +70,7 @@ body {
 a {
   color: #2e2e30;
   font-weight: 100;
+  text-align: left;
 }
 .form {
   padding: 0;
@@ -171,5 +172,13 @@ li > .thumb{
   position: absolute;
   z-index: 4;
   background-color: black;
+}
+
+.lowerVidContainer {
+  display: inline-flex;
+  width: 100%
+}
+.vidViews{
+  font-size: 12px;
 }
 

@@ -28,6 +28,22 @@ export function addVideo(formData) {
   }
 }
 
+export function increaseViews(vidInfo) {
+  return function(dispatch) {
+    return fetch('/api/videos/'+vidInfo.id, {
+      method: 'PUT', 
+      headers: {
+    'Accept': 'application/json, text/plain, */*',
+    'Content-Type': 'application/json'
+      }, 
+      body: JSON.stringify({video: {views: ++vidInfo.views}})
+    })
+      .then(response => response.json)
+      .then(video => {dispatch({type: 'INCREASE_VIEWS', vidInfo})
+    })
+  }
+}
+
 export function increaseLikes(vidInfo){
   return function(dispatch) {
     return fetch('/api/videos/' + String(vidInfo.id), {

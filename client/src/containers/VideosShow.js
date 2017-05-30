@@ -77,6 +77,8 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
   }
 
   duration(ev) {
+    const vidInfo = {id: this.props.video.id, views: this.props.video.views,}
+    this.props.actions.increaseViews(vidInfo)
     console.log('video loaded')
     this.props.video.vid = ev.target
     this.setState({video: document.querySelector('video'), duration: this.props.video.vid.duration})

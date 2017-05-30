@@ -20,7 +20,8 @@ class Api::VideosController < ApplicationController
 
   def update
     video = Video.find_by(id: params[:id])
-    video.likes = params[:video][:likes]
+    video.likes = params[:video][:likes] || video.likes
+    video.views = params[:video][:views] || video.views
     if video.save
       render json: { success: 'ok'}
     else 
@@ -30,6 +31,6 @@ class Api::VideosController < ApplicationController
 
   private 
     def video_params
-      params.require(:video).permit(:file, :title, :description, :user_id, :likes)
+      params.require(:video).permit(:file, :title, :description, :user_id, :likes, :views)
     end
 end

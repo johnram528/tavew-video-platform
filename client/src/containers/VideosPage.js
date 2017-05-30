@@ -12,7 +12,7 @@ import * as actions from '../actions/videos.js'
     event.preventDefault()
     const id = event.target.parentElement.id
     const likes = event.target.parentElement.dataset.likes
-    const vidInfo = {'id': id, 'likes': likes}
+    const vidInfo = {'id': id, 'likes': likes,}
     if(event.target.parentElement.className === "like") {
       this.props.actions.increaseLikes(vidInfo)
     }
@@ -55,9 +55,10 @@ import * as actions from '../actions/videos.js'
                   onClick={(e)=> this.handleOnVidClick(e)}/>
 
               </div>
-           
-            <p className='vidTitle'><a href={'/videos/' + video.id}>{video.title}</a></p>
-            <br/>
+              <div className='lowerVidContainer row'>
+                <p className='vidTitle col-lg-10'><a href={'/videos/' + video.id}>{video.title}</a></p>
+                <p className='vidViews col-lg-2'><i className="fa fa-eye" aria-hidden="true"></i> {video.views || 0}</p>
+              </div>
            </div> 
          </li> 
       )

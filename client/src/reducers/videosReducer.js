@@ -67,6 +67,14 @@ export default (state = [], action) => {
          likes: {$set: video.likes}
         }
       })
+    case 'INCREASE_VIEWS':
+      // debugger
+      video = state
+      // vidIndex = state.indexOf(video)
+      video.views++
+      return update(state, { 
+         views: {$set: video.views}
+      })
     case 'FETCH_VIDEO':
       return action.video;
     case 'ADD_VIDEO':
