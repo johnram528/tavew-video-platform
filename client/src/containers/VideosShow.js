@@ -161,7 +161,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
             <video className="video" autoPlay onLoadedData={(e) => this.duration(e)} onTimeUpdate={(e) => this.handleTimeChange(e)}>
               <source src={this.props.video.url} type={this.props.video.type}/>
             </video>
-            {this.state.active && overlay}
+            {this.state.active || !this.state.playing ? overlay : null}
           </div>
        
         </div>
