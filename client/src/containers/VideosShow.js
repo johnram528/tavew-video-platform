@@ -81,7 +81,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
     const time = this.props.video.vid.duration
     const minutes = parseInt(time / 60, 10);
     const seconds = parseInt(time % 60,10);
-    const duration = minutes+':'+seconds
+    const duration = seconds >= 10 ? minutes+':'+seconds : minutes+':'+'0'+seconds
     this.props.video.duration = duration
 
   }
@@ -114,13 +114,20 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
 
   render() { 
 
-    let pausedDisplay = <div className='pausedDisplay'>{this.props.video.description}</div>
+    let pausedDisplay = (<div className='pausedDisplay'>
+                          <div className='pausedContainer'>
+                            <p className='watching'> You're Watching</p><br/>
+                            <p className='pausedDisplayTitle'>{this.props.video.title}</p><br/>
+                            <p className='pausedDisplayDesc'>{this.props.video.description}</p>
+                          </div>
+                        </div>)
 
     let overlay =  (<div className='vid-overlay'>
               <button className='backButton' onClick={() => this.back()}><i className="fa fa-angle-left fa-4x" aria-hidden="true"></i></button>
               {!this.state.playing && pausedDisplay}
               <div className='controls'>
                 <VideoSeekSlider max={this.state.duration} currentTime={this.state.currentTime} progress={0} onChange={(time:number)=> this.handleSeek(time)} />
+
                 <div className='lowerControls row'>
                   <button className='playButton col-sm-1' onClick={() => this.playPause()}><i className={this.state.playing ? 'fa fa-pause fa-2x' : 'fa fa-play fa-2x'} aria-hidden="true"></i></button>
                   <div className='vol col-sm-2'>

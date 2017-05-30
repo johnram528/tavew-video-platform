@@ -145,12 +145,13 @@ button:active, button:focus, button .active {
 }
 
 .pausedDisplay {
-  align-self: center;
   background-color: black;
   height: 100%;
+  display: flex;
+  justify-content: center;
   width: 100%;
   color: #d4d4d6;
-  opacity:.75;
+  opacity:.85;
   position: absolute;
   border: 1px;
   border-radius: .5;
@@ -161,6 +162,32 @@ button:active, button:focus, button .active {
 .fullScreen {
     margin-top: 0;
     margin-right: 15px;
+}
+
+.pausedDisplayDesc {
+  text-align: left;
+  font-size: 14px;
+ 
+
+
+}
+
+.watching {
+  text-align: left;
+  margin-top: 200px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.pausedDisplayTitle {
+  text-align: left;
+  font-size: 28px;
+  font-weight: 600
+ 
+}
+
+.pausedContainer {
+  width: 50%
 }
 
 
