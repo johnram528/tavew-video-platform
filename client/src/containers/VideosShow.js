@@ -17,6 +17,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
       playing: true,
       active: false, 
       seekValue: 0,
+      volume: 100,
 
     }
   }
@@ -112,8 +113,18 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
     this.state.video.currentTime = this.state.currentTime
   }
 
-  render() { 
+  handleVolumeChange(e){
+    this.setState({
+      volume:parseInt(e.target.value,10)
+    })
+    this.props.video.vid.volume = this.state.volume/100;
 
+    console.log
+  }
+  render() { 
+    if(this.state.volume === 0){
+      this.props.video.vid.volume = 0
+    }
     let pausedDisplay = (<div className='pausedDisplay'>
                           <div className='pausedContainer'>
                             <p className='watching'> You're Watching</p><br/>
@@ -132,7 +143,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
                   <button className='playButton col-sm-1' onClick={() => this.playPause()}><i className={this.state.playing ? 'fa fa-pause fa-2x' : 'fa fa-play fa-2x'} aria-hidden="true"></i></button>
                   <div className='vol col-sm-2'>
                     <button className='volume'><i className="fa fa-volume-up fa-lg" aria-hidden="true"></i></button>
-                    <input className='volumeRange' type='range' defaultValue='100'/>
+                    <input className='volumeRange' type='range' defaultValue={this.state.volume} onChange={(e)=> this.handleVolumeChange(e)}/>
                   </div>
                   <p className='controlVidTitle col-sm-4'><span className='playing'>Playing: </span>{this.props.video.title}</p>    
                   <p className='displayTime col-sm-2'>{this.state.currentDisplayTime} / {this.props.video.duration}</p>
