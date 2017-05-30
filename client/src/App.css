@@ -49,6 +49,7 @@
   display: flex; 
   justify-content: center;  
   position: absolute;
+  z-index: 2147483647
  }
 
  .vid-overlay {
@@ -190,4 +191,7 @@ button:active, button:focus, button .active {
   width: 50%
 }
 
+::-webkit-media-controls {
+  display:none !important;
+}
 

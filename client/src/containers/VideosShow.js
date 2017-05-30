@@ -18,6 +18,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
       active: false, 
       seekValue: 0,
       volume: 100,
+      fullScreen: false,
 
     }
   }
@@ -118,8 +119,10 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
       volume:parseInt(e.target.value,10)
     })
     this.props.video.vid.volume = this.state.volume/100;
+  }
 
-    console.log
+  handleFullScreen(){
+    !this.state.fullScreen ? this.props.video.vid.webkitEnterFullscreen() : this.props.video.vid.webkitExitFullscreen()
   }
   render() { 
     if(this.state.volume === 0){
@@ -147,7 +150,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
                   </div>
                   <p className='controlVidTitle col-sm-4'><span className='playing'>Playing: </span>{this.props.video.title}</p>    
                   <p className='displayTime col-sm-2'>{this.state.currentDisplayTime} / {this.props.video.duration}</p>
-                  <button className='fullScreen col-sm-1'><i className="fa fa-expand fa-lg" aria-hidden="true"></i></button> 
+                  <button className='fullScreen col-sm-1' onClick={()=> this.handleFullScreen()}><i className="fa fa-expand fa-lg" aria-hidden="true"></i></button> 
                 </div>
               </div>
             </div>)
@@ -158,7 +161,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
             <video className="video" autoPlay onLoadedData={(e) => this.duration(e)} onTimeUpdate={(e) => this.handleTimeChange(e)}>
               <source src={this.props.video.url} type={this.props.video.type}/>
             </video>
-            {overlay}
+            {this.state.active && overlay}
           </div>
        
         </div>
