@@ -83,7 +83,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
     const time = this.props.video.vid.duration
     const minutes = parseInt(time / 60, 10);
     const seconds = parseInt(time % 60,10);
-    const duration = seconds >= 10 ? minutes+':'+seconds : minutes+':'+'0'+seconds
+    const duration = seconds >= 10 ? minutes+':'+seconds : minutes+':0'+seconds
     this.props.video.duration = duration
 
   }
@@ -94,7 +94,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
     this.setState({timeValue: timeValue, seekValue:timeValue, currentTime:time})
     const minutes = parseInt(time / 60, 10);
     const seconds = parseInt(time % 60,10); 
-    const duration = seconds >= 10 ? minutes+':'+seconds : minutes+':'+'0'+seconds
+    const duration = seconds >= 10 ? minutes+':'+seconds : minutes+':0'+seconds
     this.setState({currentDisplayTime: duration,})
   }
   pause(){
@@ -111,7 +111,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
   }
   handleSeek(time) {
     this.setState({currentTime:time}) 
-    this.state.video.currentTime = this.state.currentTime
+    this.props.video.vid.currentTime = this.state.currentTime
   }
 
   handleVolumeChange(e){
