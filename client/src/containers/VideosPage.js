@@ -75,7 +75,7 @@ import * as actions from '../actions/videos.js'
 }
 
 function mapStateToProps(state) { 
-  return {videos: state.videos }
+  return {videos: state.videos.sort(function(a,b){return b.likes - a.likes}) }
 }
 
 function mapDispatchToProps(dispatch) {
