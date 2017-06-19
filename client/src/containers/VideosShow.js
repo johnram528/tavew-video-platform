@@ -53,6 +53,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
       active: true,
     })
     this.startTimer()
+    console.log(this.state)
   }
   resetTimer() {
     clearTimeout(timeout);
@@ -121,6 +122,20 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
     this.props.video.vid.volume = this.state.volume/100;
   }
 
+  handleVolMute() {
+    this.setState({
+      volume: 0
+    })
+    this.props.video.vid.volume = 0
+  }
+
+   handleVolFull() {
+    this.setState({
+      volume: 100
+    })
+    this.props.video.vid.volume = 1
+  }
+
   handleFullScreen(){
     !this.state.fullScreen ? this.props.video.vid.webkitEnterFullscreen() : this.props.video.vid.webkitExitFullscreen()
   }
@@ -145,8 +160,9 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
                 <div className='lowerControls row'>
                   <button className='playButton col-sm-1' onClick={() => this.playPause()}><i className={this.state.playing ? 'fa fa-pause fa-2x' : 'fa fa-play fa-2x'} aria-hidden="true"></i></button>
                   <div className='vol col-sm-2'>
-                    <button className='volume'><i className="fa fa-volume-up fa-lg" aria-hidden="true"></i></button>
-                    <input className='volumeRange' type='range' defaultValue={this.state.volume} onChange={(e)=> this.handleVolumeChange(e)}/>
+                    <button className='volumeMute' onClick={()=> this.handleVolMute()}><i className="fa fa-volume-off fa-lg" aria-hidden="true"></i></button>
+                    <input className='volumeRange' type='range' value={this.state.volume} onChange={(e)=> this.handleVolumeChange(e)}/>
+                    <button className='volume' onClick={()=> this.handleVolFull()}><i className="fa fa-volume-up fa-lg" aria-hidden="true"></i></button>
                   </div>
                   <p className='controlVidTitle col-sm-4'><span className='playing'>Playing: </span>{this.props.video.title}</p>    
                   <p className='displayTime col-sm-2'>{this.state.currentDisplayTime} / {this.props.video.duration}</p>
@@ -161,7 +177,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
             <video className="video" autoPlay onLoadedData={(e) => this.duration(e)} onTimeUpdate={(e) => this.handleTimeChange(e)}>
               <source src={this.props.video.url} type={this.props.video.type}/>
             </video>
-            {this.state.active || !this.state.playing ? overlay : null}
+             {this.state.active || !this.state.playing ? overlay : null}
           </div>
        
         </div>

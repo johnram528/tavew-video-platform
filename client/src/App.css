@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -119,8 +120,11 @@ button:active, button:focus, button .active {
   display: flex;
   justify-content: flex-start;
 }
+.vol {
+  display: flex;
+}
 
-.volume, .fullScreen {
+.volume, .fullScreen, .volumeMute{
   justify-content: flex-start;
   background-color: black;
   color:white;
