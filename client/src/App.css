@@ -199,3 +199,8 @@ button:active, button:focus, button .active {
   display:none !important;
 }
 
+input[type=range]::-moz-range-track {
+  
+  background-color: white;
+}
+
