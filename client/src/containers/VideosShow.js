@@ -140,12 +140,24 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
     !this.state.fullScreen ? this.props.video.vid.webkitEnterFullscreen() : this.props.video.vid.webkitExitFullscreen()
   }
 
-  handleTenBack(e){
-    let time = e.target.currentTime - 10
+  handleTenBack(){
+    let time = this.state.currentTime - 10
+    console.log(this.state.active && 'active')
+    console.log(time)
+    console.log(this.state.currentTime)
+    if(time <= 10) {
+      time = 0
+    }
+    console.log(time)
     this.setState({
-      currentTime: time,
+      currentTime: time
+    }, 
+    function () {
+      console.log(this.state.currentTime)
+      this.props.video.vid.currentTime = this.state.currentTime
     })
-    this.props.video.vid.currentTime = this.state.currentTime
+    
+    
   }
   render() { 
     if(this.state.volume === 0){
@@ -188,7 +200,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
                     <button className='volume' onClick={()=> this.handleVolFull()}><i className="fa fa-volume-up fa-lg" aria-hidden="true"></i></button>
                   </div>
                   <div className='tenBack'> 
-                    <button className='tenBackBtn' onClick={(e)=> this.handleTenBack(e)}>
+                    <button className='tenBackBtn' onClick={()=> this.handleTenBack()}>
                     Ten
                     </button>
                   </div>
@@ -200,7 +212,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
             </div>)
     
     return (      
-        <div key={this.props.video.id} className="vidShowContainer" onMouseMove={() => this.handleMouseMove()}>
+        <div key={this.props.video.id} className="vidShowContainer" onMouseMove={() => this.handleMouseMove()} onClick={()=> this.handleMouseMove()}>
           <div id='wrap-video' >
             <video className="video" autoPlay onLoadedData={(e) => this.duration(e)} onTimeUpdate={(e) => this.handleTimeChange(e)}>
               <source src={this.props.video.url} type={this.props.video.type}/>
