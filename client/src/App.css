@@ -124,7 +124,7 @@ button:active, button:focus, button .active {
   display: flex;
 }
 
-.volume, .fullScreen, .volumeMute{
+.volume, .fullScreen, .volumeMute, .tenBackBtn{
   justify-content: flex-start;
   background-color: black;
   color:white;
@@ -200,7 +200,8 @@ button:active, button:focus, button .active {
 }
 
 input[type=range]::-moz-range-track {
-  
+
   background-color: white;
 }
+
 

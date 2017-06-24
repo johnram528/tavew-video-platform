@@ -139,30 +139,58 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
   handleFullScreen(){
     !this.state.fullScreen ? this.props.video.vid.webkitEnterFullscreen() : this.props.video.vid.webkitExitFullscreen()
   }
+
+  handleTenBack(e){
+    let time = e.target.currentTime - 10
+    this.setState({
+      currentTime: time,
+    })
+    this.props.video.vid.currentTime = this.state.currentTime
+  }
   render() { 
     if(this.state.volume === 0){
       this.props.video.vid.volume = 0
     }
-    let pausedDisplay = (<div className='pausedDisplay'>
+
+    let socialButtons = (<div className='socialButtons'>
+                          <div className = 'fbLikeBtn'>
+                            FB
+                          </div>
+                          <div className='tweetBtn'>
+                            Tweet
+                          </div>
+                          <div className='embedBtn'>
+                            Embed
+                          </div>
+
+                          
+                        </div>)
+
+        let pausedDisplay = (<div className='pausedDisplay'>
                           <div className='pausedContainer'>
+                          {socialButtons}
                             <p className='watching'> You're Watching</p><br/>
                             <p className='pausedDisplayTitle'>{this.props.video.title}</p><br/>
                             <p className='pausedDisplayDesc'>{this.props.video.description}</p>
                           </div>
-                        </div>)
+                        </div>) 
 
     let overlay =  (<div className='vid-overlay'>
               <button className='backButton' onClick={() => this.back()}><i className="fa fa-angle-left fa-4x" aria-hidden="true"></i></button>
               {!this.state.playing && pausedDisplay}
               <div className='controls'>
                 <VideoSeekSlider max={this.state.duration} currentTime={this.state.currentTime} progress={0} onChange={(time:number)=> this.handleSeek(time)} />
-
                 <div className='lowerControls row'>
                   <button className='playButton col-sm-1' onClick={() => this.playPause()}><i className={this.state.playing ? 'fa fa-pause fa-2x' : 'fa fa-play fa-2x'} aria-hidden="true"></i></button>
                   <div className='vol col-sm-2'>
                     <button className='volumeMute' onClick={()=> this.handleVolMute()}><i className="fa fa-volume-off fa-lg" aria-hidden="true"></i></button>
                     <input className='volumeRange' type='range' value={this.state.volume} onChange={(e)=> this.handleVolumeChange(e)}/>
                     <button className='volume' onClick={()=> this.handleVolFull()}><i className="fa fa-volume-up fa-lg" aria-hidden="true"></i></button>
+                  </div>
+                  <div className='tenBack'> 
+                    <button className='tenBackBtn' onClick={(e)=> this.handleTenBack(e)}>
+                    Ten
+                    </button>
                   </div>
                   <p className='controlVidTitle col-sm-4'><span className='playing'>Playing: </span>{this.props.video.title}</p>    
                   <p className='displayTime col-sm-2'>{this.state.currentDisplayTime} / {this.props.video.duration}</p>
@@ -177,7 +205,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
             <video className="video" autoPlay onLoadedData={(e) => this.duration(e)} onTimeUpdate={(e) => this.handleTimeChange(e)}>
               <source src={this.props.video.url} type={this.props.video.type}/>
             </video>
-             {this.state.active || !this.state.playing ? overlay : null}
+             {this.state.active || !this.state.playing ? overlay : null}  
           </div>
        
         </div>
