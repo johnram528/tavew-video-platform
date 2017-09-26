@@ -58,36 +58,39 @@ class VideosNew extends Component {
       <div>
         <div className='form'>
         <form id="form" onSubmit={(event) => this.handleOnClick(event)}>
-          <div className='input-group'>
-            <input className='add-video-field'
-            type="text" 
-            name="title"
-            placeholder='title'  
-            onChange={(event) => this.handleInputChange(event)}/>
-          </div>
+          <div className='inputWrap row justify-content-center'>
+            <div className='formTitle col-xs-12'>Upload Video</div>
+            <div className='input-group col-xs-12'>
+              <input className='add-video-field'
+              type="text" 
+              name="title"
+              placeholder='Title'  
+              onChange={(event) => this.handleInputChange(event)}/>
+            </div>
 
-          <div className='input-group'>
-            <input className='add-video-field'
-            type="text" 
-            name="description"
-            placeholder='description' 
-            size='70'
-            onChange={(event) => this.handleInputChange(event)}/>
-          </div>
-                  
-          <div className='input-group'>
-            <input className='add-video-field'
-            type="file" 
-            name="file" 
-            accept="video/mp4,video/x-m4v,video/*"
-            onChange={(event) => this.handleOnAttach(event)}/>
-          </div>
+            <div className='input-group'>
+              <input className='add-video-field'
+              type="text" 
+              name="description"
+              placeholder='Description' 
+              size='70'
+              onChange={(event) => this.handleInputChange(event)}/>
+            </div>
+                    
+            <div className='input-group col-xs-12'>
+              <input className='add-video-field'
+              type="file" 
+              name="file" 
+              accept="video/mp4,video/x-m4v,video/*"
+              onChange={(event) => this.handleOnAttach(event)}/>
+            </div>
 
-          <div className='input-group'>
-            <input className='add-video-button'
-            type="submit" 
-            name="Upload Video" 
-            />
+            <div className='input-group col-xs-12'>
+              <input className='add-video-button'
+              type="submit" 
+              name="Upload Video" 
+              />
+            </div>
           </div>
         </form>
         </div>

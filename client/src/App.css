@@ -204,4 +204,49 @@ input[type=range]::-moz-range-track {
   background-color: white;
 }
 
+.tenBackBtn i{
+  color: white;
+}
+
+#form {
+  padding: 50px;
+  border: 1px solid #ddd;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.add-video-field {
+  background-color: white;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #ddd;  
+  width: 100%;
+}
+
+.input-group {
+  margin-top: 5px;
+  width: 100%;
+}
+
+input[type=file] {
+  cursor: pointer;
+}
+
+.add-video-button {
+  width: 50%;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background-color: #e7e7e7;
+  height: 35px;
+}
+
+.add-video-button:hover {
+  background-color: #ddd;
+}
+
+.formTitle {
+  font-size: 18px;
+}
+
+
 

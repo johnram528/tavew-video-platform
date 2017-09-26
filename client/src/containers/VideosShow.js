@@ -201,7 +201,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
                   </div>
                   <div className='tenBack'> 
                     <button className='tenBackBtn' onClick={()=> this.handleTenBack()}>
-                    Ten
+                      <i class="fa fa-step-backward" aria-hidden="true"></i>
                     </button>
                   </div>
                   <p className='controlVidTitle col-sm-4'><span className='playing'>Playing: </span>{this.props.video.title}</p>    
@@ -212,7 +212,7 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
             </div>)
     
     return (      
-        <div key={this.props.video.id} className="vidShowContainer" onMouseMove={() => this.handleMouseMove()} onClick={()=> this.handleMouseMove()}>
+        <div key={this.props.video.id} className="vidShowContainer" onMouseMove={() => this.handleMouseMove()}  onClick={()=> this.handleMouseMove()}>
           <div id='wrap-video' >
             <video className="video" autoPlay onLoadedData={(e) => this.duration(e)} onTimeUpdate={(e) => this.handleTimeChange(e)}>
               <source src={this.props.video.url} type={this.props.video.type}/>
