@@ -1,1 +1,38 @@
-Todo.doc
+Video Player
+-Facebook Likes
+-Tweet
+-Embed
+-10 seconds back?   -- Logic complete. Need to test and style. Button there button breaks if no connection?
+-ads
+-seek previews 
+
+Users
+-authentication
+-views
+
+Categories
+-sort
+-search
+
+Index
+-ads
+-playtime
+
+
+DB Brainstorm
+
+-Users
+  -has_many :videos
+
+-Videos
+  -belongs_to :user
+  -belongs_to :video_categories
+
+
+-Categories
+  -has_many :videos, through: video_categories
+  
+
+A user has many videos, which belong to a user and a video category. 
+
+A caterogy has many videos through video categories

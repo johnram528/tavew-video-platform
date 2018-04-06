@@ -180,7 +180,6 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
 
         let pausedDisplay = (<div className='pausedDisplay'>
                           <div className='pausedContainer'>
-                          {socialButtons}
                             <p className='watching'> You're Watching</p><br/>
                             <p className='pausedDisplayTitle'>{this.props.video.title}</p><br/>
                             <p className='pausedDisplayDesc'>{this.props.video.description}</p>
@@ -204,9 +203,9 @@ import 'react-video-seek-slider/lib/video-seek-slider.css'
                       <i class="fa fa-step-backward" aria-hidden="true"></i>
                     </button>
                   </div>
-                  <p className='controlVidTitle col-sm-4'><span className='playing'>Playing: </span>{this.props.video.title}</p>    
+                  <p className='controlVidTitle col-sm-5'><span className='playing'>Playing: </span>{this.props.video.title}</p>    
                   <p className='displayTime col-sm-2'>{this.state.currentDisplayTime} / {this.props.video.duration}</p>
-                  <button className='fullScreen col-sm-1' onClick={()=> this.handleFullScreen()}><i className="fa fa-expand fa-lg" aria-hidden="true"></i></button> 
+                  <button className='fullScreen hidden' onClick={()=> this.handleFullScreen()}><i className="fa fa-expand fa-lg" aria-hidden="true"></i></button> 
                 </div>
               </div>
             </div>)

@@ -35,8 +35,8 @@ import * as actions from '../actions/videos.js'
   render() {
 
     const videos = this.props.videos.map( (video) =>
-        <li key={video.id}>
-          <div className="thumbVid">
+
+          <div key={video.id} className="thumbVid col-xs-3">
            
               <div className='vidContainer'>
                 <div className='likes'>
@@ -60,7 +60,6 @@ import * as actions from '../actions/videos.js'
                 <p className='vidViews col-lg-2'><i className="fa fa-eye" aria-hidden="true"></i> {video.views || 0}</p>
               </div>
            </div> 
-         </li> 
       )
                
     const ulStyle = {
@@ -69,7 +68,7 @@ import * as actions from '../actions/videos.js'
 
     return (      
       <div className='wrap'>
-        {this.props.children || <ul className="videos" style={ulStyle}> {videos} </ul> }     
+        {this.props.children || <div className="videos" style={ulStyle}> {videos} </div> }     
       </div>  
       )
   }

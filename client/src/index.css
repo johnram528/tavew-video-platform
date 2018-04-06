@@ -26,12 +26,18 @@ body {
 
 .vidContainer{
   height: 154px;
-  width:275px;
+  width: 100%;
+  max-width:275px;
   overflow: hidden;
 }
 
 .thumbVid {
-  margin:2px;
+    margin: 2px;
+    margin-right: 10px;
+    border-bottom: 1px solid #9aa2af;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    padding: 0;
   
 }
 
@@ -42,6 +48,11 @@ body {
   justify-content: center;
   cursor: default;
   list-style: none; 
+  border: 1px solid #ddd;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: #eee;
+    border-radius: 4px;
 
 }
 
@@ -51,10 +62,11 @@ body {
 .wrap {
 
    overflow: hidden;
-   margin-top: 60px;
+  /* margin-top: 60px;*/
    margin-bottom: 30px;
    position: relative;
-    
+        padding-left: 15%;
+    padding-right: 15%;
 }
 
 .vidTitle {
@@ -176,7 +188,8 @@ li > .thumb{
 
 .lowerVidContainer {
   display: inline-flex;
-  width: 100%
+  width: 100%;
+  background-color: white;
 }
 .vidViews{
   font-size: 12px;
