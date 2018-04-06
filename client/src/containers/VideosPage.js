@@ -36,7 +36,7 @@ import * as actions from '../actions/videos.js'
 
     const videos = this.props.videos.map( (video) =>
 
-          <div key={video.id} className="thumbVid col-xs-3">
+          <div key={video.id} className="thumbVid col-xs-12 col-md-6 col-lg-3">
            
               <div className='vidContainer'>
                 <div className='likes'>

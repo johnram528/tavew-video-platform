@@ -27,7 +27,7 @@ body {
 .vidContainer{
   height: 154px;
   width: 100%;
-  max-width:275px;
+  
   overflow: hidden;
 }
 
@@ -38,6 +38,7 @@ body {
     border-radius: 2px;
     margin-bottom: 10px;
     padding: 0;
+    max-width:275px;
   
 }
 
